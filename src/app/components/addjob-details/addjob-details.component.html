@@ -1,0 +1,52 @@
+<div fxLayout.lt-md="column wrap"  fxLayoutAlign="center center" fxFlexFill class="mainDV">
+<mat-card fxFlex="80">
+<mat-toolbar fxLayoutAlign="center center" >{{title}}</mat-toolbar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="heading-form" [formGroup]="jobDetailsForm" (ngSubmit)="save()">
+ <div class="row">
+ <mat-form-field class="col-md-6">
+ 
+ <input matInput type="text" placeholder="Job Title"  formControlName="jobtitle" >
+ <mat-error *ngIf="hasError('jobtitle', 'required')">Job title is required.</mat-error>
+ 
+ </mat-form-field>
+
+ <mat-form-field class="col-md-6">
+ <input matInput type="text" placeholder="Employer" formControlName="employer" >
+ <mat-error *ngIf="hasError('employer', 'required')">Last name is required.</mat-error>
+ </mat-form-field>
+ </div>
+<div class="row">
+ <mat-form-field class="col-md-6">
+ <input matInput type="text" placeholder="City" formControlName="city" >
+ <mat-error *ngIf="hasError('city', 'required')">City name is required.</mat-error>
+ </mat-form-field>
+
+ <mat-form-field class="col-md-6">
+ <input matInput type="text" placeholder="State/Province" formControlName="state" >
+ <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
+ </mat-form-field>
+ </div>
+ <div class="row">
+ <mat-form-field  class="col-md-6">
+    <mat-label>Choose a start date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="startdate" id="startDate" >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field  class="col-md-6">
+    <mat-label>Choose a end date</mat-label>
+    <input matInput [matDatepicker]="enddatepicker" formControlName="enddate" id="endDate" >
+    <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #enddatepicker></mat-datepicker>
+  </mat-form-field>
+
+</div>
+<mat-card-actions align="center">
+<button type="button" mat-raised-button color="warn" (click)="onCancel()">BACK</button>
+ <button mat-raised-button color="primary" type="button" [disabled]="!jobDetailsForm.valid">NEXT:ADD WORK DETAILS</button>
+</mat-card-actions>
+</form>
+  
+</mat-card>
+
+</div>

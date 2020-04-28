@@ -1,0 +1,25 @@
+<div fxLayoutAlign="center center" fxFlexFill class="mainDV">
+<mat-card fxFlex="25">
+<mat-toolbar fxLayoutAlign="center center" >{{title}}</mat-toolbar>
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="loginForm" (ngSubmit)="save()">
+ <mat-form-field>
+ <input matInput placeholder="Email"  formControlName="email" >
+ <mat-error *ngIf="hasError('email', 'required')">Email is required.</mat-error>
+ </mat-form-field>
+
+ <mat-form-field>
+ <input matInput type="Password" placeholder="Password" formControlName="password" >
+ <mat-error *ngIf="hasError('password', 'required')">Password is required.</mat-error>
+ </mat-form-field>
+ 
+<mat-card-actions align="center">
+ <button mat-raised-button color="primary" type="button" [disabled]="!loginForm.valid">Login</button>
+ <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+</mat-card-actions>
+<div><a fxLayoutAlign="center center" href=""> I forgot my password</a></div>
+<mat-hint align="start">Don't have an account?<a [routerLink]="['/register']"> Create One</a></mat-hint>
+</form>
+  
+</mat-card>
+
+</div>

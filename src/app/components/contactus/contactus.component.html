@@ -1,0 +1,67 @@
+<div fxLayoutAlign="center center" fxFlexFill class="mainDV">
+  <mat-card fxFlex="80">
+    <mat-toolbar fxLayoutAlign="center center">{{ title }}</mat-toolbar>
+    <form
+      fxLayoutAlign="stretch"
+      fxLayout="column"
+      class="contact-form"
+      [formGroup]="contactusForm"
+      (ngSubmit)="save()"
+    >
+      <mat-form-field>
+        <input matInput placeholder="User Name" formControlName="username" />
+        <mat-error *ngIf="hasError('username', 'required')"
+          >User name is required.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" />
+        <mat-error *ngIf="hasError('email', 'required')"
+          >Email is required.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="number"
+          placeholder="Mobile"
+          formControlName="mobile"
+        />
+        <mat-error *ngIf="hasError('mobile', 'required')"
+          >Mobile is required.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          type="text"
+          placeholder="Message"
+          formControlName="comment"
+        ></textarea>
+        <mat-error *ngIf="hasError('comment', 'required')"
+          >Message is required.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-card-actions align="center">
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [disabled]="!contactusForm.valid"
+        >
+          GetInTouch
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          color="warn"
+          (click)="onCancel()"
+        >
+          Reset
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
