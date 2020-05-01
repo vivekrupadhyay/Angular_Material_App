@@ -1,7 +1,7 @@
 <div fxLayout.lt-md="column wrap"  fxLayoutAlign="center center" fxFlexFill class="mainDV">
 <mat-card fxFlex="80">
 <mat-toolbar fxLayoutAlign="center center" >{{title}}</mat-toolbar>
-<form fxLayoutAlign="stretch" fxLayout="column" class="heading-form" [formGroup]="headingForm" (ngSubmit)="save()">
+<form fxLayoutAlign="stretch" fxLayout="column" class="heading-form" [formGroup]="headingForm" (ngSubmit)="save(headingForm.value)">
  <div class="row">
  <mat-form-field class="col-md-6">
  
@@ -26,13 +26,13 @@
  <mat-error *ngIf="hasError('state', 'required')">State is required.</mat-error>
  </mat-form-field>
  <mat-form-field class="col-md-3">
- <input matInput placeholder="Pin Code" formControlName="pincode" >
+ <input (keypress)="numberOnly($event)" type="text" maxlength="6" matInput placeholder="Pin Code" formControlName="pincode" >
  <mat-error *ngIf="hasError('pincode', 'required')">Pin code is required.</mat-error>
  </mat-form-field>
  </div>
 <div class="row">
  <mat-form-field class="col-md-6">
- <input matInput type="number" maxlength="10" placeholder="Mobile" formControlName="mobile" >
+ <input matInput type="text" (keypress)="numberOnly($event)" maxlength="10" placeholder="Mobile" formControlName="mobile" >
  <mat-error *ngIf="hasError('mobile', 'required')">Mobile is required.</mat-error>
  </mat-form-field>
  
@@ -45,7 +45,7 @@
  
 <mat-card-actions align="center">
 <button type="button" mat-raised-button color="warn" (click)="onCancel()">BACK</button>
- <button mat-raised-button color="primary" type="button" [disabled]="!headingForm.valid">NEXT:WORK HISTORY</button>
+ <button mat-raised-button color="primary" type="submit" [disabled]="!headingForm.valid">NEXT:WORK HISTORY</button>
  
 </mat-card-actions>
 

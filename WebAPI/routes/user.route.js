@@ -48,7 +48,7 @@ userRoutes.route('/update/:id').post(function(req,res){
         else{
             user.firstname=req.body.firstname;
             user.lastname=req.params.lastname;
-            user.email = req.body.email;
+            user.email = req.body.email;    
             user.mobile=req.body.mobile;
             user.gender=req.body.gender;
             user.save().then(a=>{

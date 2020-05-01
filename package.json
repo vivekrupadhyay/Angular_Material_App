@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
+    "@ckeditor/ckeditor5-angular": "^1.2.3",
     "bootstrap": "^4.4.1",
     "config": "^3.3.1",
     "pretty-quick": "^2.0.1",
