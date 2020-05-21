@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'  
 import { ReactiveFormsModule} from '@angular/forms' 
@@ -22,6 +22,9 @@ import { SummaryComponent } from './components/summary/summary.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AddjobDetailsComponent } from './components/addjob-details/addjob-details.component';
+import { UserService } from './services/user.service';
+import {UserListComponent} from './components/user-list/user-list.component'
+//import { UserDatasourceService } from './services/userDatasource.service';
 
 
 
@@ -43,7 +46,7 @@ import { AddjobDetailsComponent } from './components/addjob-details/addjob-detai
     LoginComponent,
     RegisterComponent,
     AddjobDetailsComponent,
-    
+    UserListComponent
     
   ],
   imports: [
@@ -56,7 +59,8 @@ import { AddjobDetailsComponent } from './components/addjob-details/addjob-detai
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [UserService],
+  //schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

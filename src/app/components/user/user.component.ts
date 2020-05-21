@@ -85,6 +85,7 @@ export class UserComponent implements OnInit {
   private CreateUser = (userFormValue) => {
     debugger;
     let user: User = {
+      userID:userFormValue.id,
       firstname: userFormValue.firstname,
       lastname: userFormValue.lastname,
       city: userFormValue.city,
@@ -98,9 +99,9 @@ export class UserComponent implements OnInit {
       this.output = res;
       if (this.output.StatusCode == "409") {
         this.alertService.error("This record already exists!!");
-      } else if (this.output.StatusCode == "200") {
+      } else if (this.output.status == "success") {
         this.alertService.success("Record added successfully.", true);
-        this.router.navigate(["/home"]);
+        //this.router.navigate(["/home"]);
       } else {
         this.alertService.error("Something went wrong.");
 

@@ -34,6 +34,7 @@ public keepAfterRouteChange=true;
     return this.subject.asObservable();
   }
   success(message:string,keepAfterRouteChange=false){
+    debugger;
     this.showNotification(NotificationType.Success,message,keepAfterRouteChange);
   }
   error(message:string,keepAfterRouteChange=false){

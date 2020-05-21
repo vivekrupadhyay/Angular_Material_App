@@ -3,11 +3,11 @@ const mongoose=require('mongoose');
 const app=express();
 app.use(express.json());
 const bodyParser = require('body-parser');
-const cors = require('cors');
-var corOptions={
-  origin:"http://hocalhost:3000"
-};
-app.use(cors(corOptions));
+ const cors = require('cors');
+// var corOptions={
+//   origin:"http://hocalhost:4200"
+// };
+// app.use(cors(corOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 var expressJwt = require('express-jwt');
@@ -29,7 +29,12 @@ const userRoute=require('./routes/user.route');
 const contactusRoute=require('./routes/contactus.route');
 //----------------------------------Middleware--------------------------------------//
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 /////--------------------------------Routes----------------------------------------------//////
 app.use('/user',userRoute);
 app.use('/contact',contactusRoute);
